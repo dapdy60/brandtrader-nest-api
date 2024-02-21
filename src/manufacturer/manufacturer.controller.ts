@@ -2,7 +2,7 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { ManufacturerService } from './manufacturer.service';
 import { CreateManufacturerDto } from './dto/create-manufacturer.dto';
 import { UpdateManufacturerDto } from './dto/update-manufacturer.dto';
-import { ApiCreatedResponse, ApiTags } from '@nestjs/swagger';
+import { ApiCreatedResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { ManufacturerEntity } from './entities/manufacturer.entity';
 
 @Controller('manufacturer')
@@ -17,13 +17,13 @@ export class ManufacturerController {
   }
 
   @Get()
-  @ApiCreatedResponse({ type: ManufacturerEntity, isArray: true })
+  @ApiOkResponse({ type: ManufacturerEntity, isArray: true })
   findAll() {
     return this.manufacturerService.findAll();
   }
 
   @Get(':id')
-  @ApiCreatedResponse({ type: ManufacturerEntity })
+  @ApiOkResponse({ type: ManufacturerEntity })
   findOne(@Param('id') id: string) {
     return this.manufacturerService.findOne(id);
   }
@@ -35,7 +35,7 @@ export class ManufacturerController {
   }
 
   @Delete(':id')
-  @ApiCreatedResponse({ type: ManufacturerEntity })
+  @ApiOkResponse({ type: ManufacturerEntity })
   remove(@Param('id') id: string) {
     return this.manufacturerService.remove(id);
   }

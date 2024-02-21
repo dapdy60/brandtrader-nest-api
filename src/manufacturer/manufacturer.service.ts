@@ -8,9 +8,7 @@ export class ManufacturerService {
   constructor(private prisma: PrismaService) {}
 
   create(createManufacturerDto: CreateManufacturerDto) {
-    return this.prisma.manufacturer.create({
-      data: createManufacturerDto,
-    });
+    return this.prisma.manufacturer.create({ data: createManufacturerDto });
   }
 
   findAll() {
@@ -22,16 +20,10 @@ export class ManufacturerService {
   }
 
   update(id: string, updateManufacturerDto: UpdateManufacturerDto) {
-    return this.prisma.manufacturer.update({
-      where: { id },
-      data: updateManufacturerDto,
-    });
+    return this.prisma.manufacturer.update({ where: { id }, data: updateManufacturerDto });
   }
 
   remove(id: string) {
-    return this.prisma.manufacturer.update({
-      where: { id },
-      data: { isDeleted: true },
-    });
+    return this.prisma.manufacturer.update({ where: { id }, data: { isDeleted: true } });
   }
 }
