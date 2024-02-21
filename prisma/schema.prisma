@@ -1,0 +1,103 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// CommonProperties is not explicitly defined as it's just a GUID primary key in other tables
+
+model BatchCodeDecodingResult {
+  id                   String    @id @default(uuid()) @map("id")
+  creationTime         DateTime  @default(now()) @map("creationTime")
+  creatorId            String?   @map("creatorId")
+  lastModificationTime DateTime? @map("lastModificationTime")
+  lastModifierId       String?   @map("lastModifierId")
+  isDeleted            Boolean   @default(false) @map("isDeleted")
+  deleterId            String?   @map("deleterId")
+  deletionTime         DateTime? @map("deletionTime")
+
+  inputBatchCode                 String
+  responseDictionaryJson         String
+  usedSmartLookup                Boolean
+  brand                          Brand              @relation(fields: [brandId], references: [id])
+  brandId                        String
+  batchCodeCalculationFormular   BatchCodeFormular? @relation(fields: [batchCodeCalculationFormularId], references: [id])
+  batchCodeCalculationFormularId String?
+  userDetails                    UserDetails?       @relation(fields: [userDetailsId], references: [id])
+  userDetailsId                  String?
+}
+
+model BatchCodeFormular {
+  id                   String    @id @default(uuid()) @map("id")
+  creationTime         DateTime  @default(now()) @map("creationTime")
+  creatorId            String?   @map("creatorId")
+  lastModificationTime DateTime? @map("lastModificationTime")
+  lastModifierId       String?   @map("lastModifierId")
+  isDeleted            Boolean   @default(false) @map("isDeleted")
+  deleterId            String?   @map("deleterId")
+  deletionTime         DateTime? @map("deletionTime")
+
+  manufacturer             Manufacturer              @relation(fields: [manufacturerId], references: [id])
+  manufacturerId           String
+  decodeFunctionShortName  String
+  decodeFunctionFullName   String
+  exampleImageURL          String
+  exampleInput             String
+  decodeFunctionType       String
+  batchCodeDecodingResults BatchCodeDecodingResult[]
+}
+
+model UserDetails {
+  id                        String                    @id @default(uuid()) @map("id")
+  usedMainPlatform          Boolean
+  platformDetails           String
+  latitude                  Float
+  longitude                 Float
+  state                     String
+  country                   String
+  ipAddress                 String
+  additionalLocationDetails String
+  batchCodeDecodingResults  BatchCodeDecodingResult[]
+  IsDeleted                 Boolean                   @default(false) @map("isDeleted")
+}
+
+model Brand {
+  id                   String    @id @default(uuid()) @map("id")
+  creationTime         DateTime  @default(now()) @map("creationTime")
+  creatorId            String?   @map("creatorId")
+  lastModificationTime DateTime? @map("lastModificationTime")
+  lastModifierId       String?   @map("lastModifierId")
+  isDeleted            Boolean   @default(false) @map("isDeleted")
+  deleterId            String?   @map("deleterId")
+  deletionTime         DateTime? @map("deletionTime")
+
+  manufacturer             Manufacturer?             @relation(fields: [manufacturerId], references: [id])
+  manufacturerId           String?
+  fullName                 String
+  standardName             String
+  logoUrl                  String
+  batchCodeDecodingResults BatchCodeDecodingResult[] // Opposite relation field
+}
+
+model Manufacturer {
+  id                   String    @id @default(uuid()) @map("id")
+  creationTime         DateTime  @default(now()) @map("creationTime")
+  creatorId            String?   @map("creatorId")
+  lastModificationTime DateTime? @map("lastModificationTime")
+  lastModifierId       String?   @map("lastModifierId")
+  isDeleted            Boolean   @default(false) @map("isDeleted")
+  deleterId            String?   @map("deleterId")
+  deletionTime         DateTime? @map("deletionTime")
+
+  name                          String
+  logoUrl                       String
+  description                   String
+  brands                        Brand[]
+  batchCodeCalculationFormulars BatchCodeFormular[]
+}
