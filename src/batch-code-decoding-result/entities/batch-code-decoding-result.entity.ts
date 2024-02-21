@@ -1,55 +1,32 @@
-import { ApiProperty } from '@nestjs/swagger';
-import { BatchCodeFormular, Brand, UserDetails } from '@prisma/client';
-
-export class BatchCodeDecodingResult {
+import { BatchCodeDecodingResult } from "@prisma/client";
+import { ApiProperty } from "@nestjs/swagger";
+export class BatchCodeDecodingResultEntity implements BatchCodeDecodingResult {
     @ApiProperty()
     id: string;
-
     @ApiProperty()
     creationTime: Date;
-
     @ApiProperty()
-    creatorId: string;
-
+    creatorId: string | null;
     @ApiProperty()
-    lastModificationTime: Date;
-
+    lastModificationTime: Date | null;
     @ApiProperty()
-    lastModifierId: string;
-
+    lastModifierId: string | null;
     @ApiProperty()
     isDeleted: boolean;
-
     @ApiProperty()
-    deleterId: string;
-
+    deleterId: string | null;
     @ApiProperty()
-    deletionTime: Date;
-
+    deletionTime: Date | null;
     @ApiProperty()
     inputBatchCode: string;
-
     @ApiProperty()
     responseDictionaryJson: string;
-
     @ApiProperty()
     usedSmartLookup: boolean;
-
-    @ApiProperty()
-    brand: Brand;
-
     @ApiProperty()
     brandId: string;
-
     @ApiProperty()
-    batchCodeCalculationFormular: BatchCodeFormular;
-
+    batchCodeCalculationFormularId: string | null;
     @ApiProperty()
-    batchCodeCalculationFormularId: string;
-
-    @ApiProperty()
-    userDetails: UserDetails;
-
-    @ApiProperty()
-    userDetailsId: string;
+    userDetailsId: string | null;
 }

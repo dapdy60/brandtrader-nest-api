@@ -5,6 +5,7 @@ import { PrismaModule } from './prisma/prisma.module';
 import { ArticlesModule } from './articles/articles.module';
 import { BatchCodeDecodingResultModule } from './batch-code-decoding-result/batch-code-decoding-result.module';
 
+
 @Module({
   imports: [PrismaModule, ArticlesModule, BatchCodeDecodingResultModule],
   controllers: [AppController],
