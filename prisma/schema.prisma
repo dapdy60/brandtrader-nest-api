@@ -64,6 +64,7 @@ model UserDetails {
   ipAddress                 String
   additionalLocationDetails String
   batchCodeDecodingResults  BatchCodeDecodingResult[]
+  userFeedbacks                  UserFeedback[]
   IsDeleted                 Boolean                   @default(false) @map("isDeleted")
 }
 
@@ -100,4 +101,29 @@ model Manufacturer {
   description                   String
   brands                        Brand[]
   batchCodeCalculationFormulars BatchCodeFormular[]
+}
+
+model UserFeedback {
+  id                            String        @id @default(uuid()) @map("id")
+  creationTime                  DateTime      @default(now()) @map("creationTime")
+  creatorId                     String?       @map("creatorId")
+  lastModificationTime          DateTime?     @map("lastModificationTime")
+  lastModifierId                String?       @map("lastModifierId")
+  isDeleted                     Boolean       @default(false) @map("isDeleted")
+  deleterId                     String?       @map("deleterId")
+  deletionTime                  DateTime?     @map("deletionTime")
+
+  feedbackType                  String
+  feedbackMessage               String
+  feedbackSubject               String
+  feedbackResponse              String
+  feedbackResponseTime          DateTime
+  feedbackResponseUserDetails   UserDetails?  @relation(fields: [feedbackResponseUserDetailsId], references: [id])
+  feedbackResponseUserDetailsId String?       @map("feedbackResponseUserDetailsId")
+  // Additional properties
+  rating                        Int
+  isResolved                    Boolean
+  resolvedBy                    String?
+  resolvedTime                  DateTime?
+  resolvedMessage               String?
 }

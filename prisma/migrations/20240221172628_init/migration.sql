@@ -89,6 +89,31 @@ CREATE TABLE "Manufacturer" (
     CONSTRAINT "Manufacturer_pkey" PRIMARY KEY ("id")
 );
 
+-- CreateTable
+CREATE TABLE "UserFeedback" (
+    "id" TEXT NOT NULL,
+    "creationTime" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "creatorId" TEXT,
+    "lastModificationTime" TIMESTAMP(3),
+    "lastModifierId" TEXT,
+    "isDeleted" BOOLEAN NOT NULL DEFAULT false,
+    "deleterId" TEXT,
+    "deletionTime" TIMESTAMP(3),
+    "feedbackType" TEXT NOT NULL,
+    "feedbackMessage" TEXT NOT NULL,
+    "feedbackSubject" TEXT NOT NULL,
+    "feedbackResponse" TEXT NOT NULL,
+    "feedbackResponseTime" TIMESTAMP(3) NOT NULL,
+    "feedbackResponseUserDetailsId" TEXT,
+    "rating" INTEGER NOT NULL,
+    "isResolved" BOOLEAN NOT NULL,
+    "resolvedBy" TEXT,
+    "resolvedTime" TIMESTAMP(3),
+    "resolvedMessage" TEXT,
+
+    CONSTRAINT "UserFeedback_pkey" PRIMARY KEY ("id")
+);
+
 -- AddForeignKey
 ALTER TABLE "BatchCodeDecodingResult" ADD CONSTRAINT "BatchCodeDecodingResult_brandId_fkey" FOREIGN KEY ("brandId") REFERENCES "Brand"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
@@ -103,3 +128,6 @@ ALTER TABLE "BatchCodeFormular" ADD CONSTRAINT "BatchCodeFormular_manufacturerId
 
 -- AddForeignKey
 ALTER TABLE "Brand" ADD CONSTRAINT "Brand_manufacturerId_fkey" FOREIGN KEY ("manufacturerId") REFERENCES "Manufacturer"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "UserFeedback" ADD CONSTRAINT "UserFeedback_feedbackResponseUserDetailsId_fkey" FOREIGN KEY ("feedbackResponseUserDetailsId") REFERENCES "UserDetails"("id") ON DELETE SET NULL ON UPDATE CASCADE;

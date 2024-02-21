@@ -7,10 +7,11 @@ import { BatchCodeDecodingResultModule } from './batch-code-decoding-result/batc
 import { BatchCodeFormularModule } from './batch-code-formular/batch-code-formular.module';
 import { BrandModule } from './brand/brand.module';
 import { ManufacturerModule } from './manufacturer/manufacturer.module';
+import { UserFeedbackModule } from './user-feedback/user-feedback.module';
 
 
 @Module({
-  imports: [PrismaModule, ArticlesModule, BatchCodeDecodingResultModule, BatchCodeFormularModule, BrandModule, ManufacturerModule],
+  imports: [PrismaModule, ArticlesModule, BatchCodeDecodingResultModule, BatchCodeFormularModule, BrandModule, ManufacturerModule, UserFeedbackModule],
   controllers: [AppController],
   providers: [AppService],
 })
