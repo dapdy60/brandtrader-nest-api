@@ -5,10 +5,11 @@ import { PrismaModule } from './prisma/prisma.module';
 import { ArticlesModule } from './articles/articles.module';
 import { BatchCodeDecodingResultModule } from './batch-code-decoding-result/batch-code-decoding-result.module';
 import { BatchCodeFormularModule } from './batch-code-formular/batch-code-formular.module';
+import { BrandModule } from './brand/brand.module';
 
 
 @Module({
-  imports: [PrismaModule, ArticlesModule, BatchCodeDecodingResultModule, BatchCodeFormularModule],
+  imports: [PrismaModule, ArticlesModule, BatchCodeDecodingResultModule, BatchCodeFormularModule, BrandModule],
   controllers: [AppController],
   providers: [AppService],
 })
