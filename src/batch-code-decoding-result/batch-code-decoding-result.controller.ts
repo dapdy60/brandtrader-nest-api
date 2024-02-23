@@ -4,6 +4,7 @@ import { CreateBatchCodeDecodingResultDto } from './dto/create-batch-code-decodi
 import { UpdateBatchCodeDecodingResultDto } from './dto/update-batch-code-decoding-result.dto';
 import { ApiCreatedResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { BatchCodeDecodingResultEntity } from './entities/batch-code-decoding-result.entity';
+import { DecodeResult } from 'src/batch-code-decoding-result/utils/DecodeResult';
 
 @Controller('batch-code-decoding-result')
 @ApiTags('Batch Code Decoding Result')
@@ -13,8 +14,19 @@ export class BatchCodeDecodingResultController {
   @Post()  
   @ApiCreatedResponse({ type: BatchCodeDecodingResultEntity })
   create(@Body() createBatchCodeDecodingResultDto: CreateBatchCodeDecodingResultDto) {
-    return this.batchCodeDecodingResultService.create(createBatchCodeDecodingResultDto);
+    return this.  batchCodeDecodingResultService.create(createBatchCodeDecodingResultDto);
   }
+  @Post('decode')  
+  @ApiCreatedResponse({ type: BatchCodeDecodingResultEntity })
+  decode(@Body() createBatchCodeDecodingResultDto: CreateBatchCodeDecodingResultDto) {
+    return this.  batchCodeDecodingResultService.decode(createBatchCodeDecodingResultDto);
+  }
+
+  // @Post('decode')
+  // @ApiCreatedResponse({ type: DecodeResult })
+  // decode(@Body() createBatchCodeDecoderDto: CreateBatchCodeDecoderDto) {
+  //   return this.batchCodeDecodingResultService.decode(createBatchCodeDecoderDto);
+  // }
 
   @Get()
   @ApiOkResponse({ type: BatchCodeDecodingResultEntity, isArray: true })

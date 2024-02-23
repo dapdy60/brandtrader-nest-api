@@ -8,6 +8,7 @@ import { BatchCodeFormularModule } from './batch-code-formular/batch-code-formul
 import { ManufacturerModule } from './manufacturer/manufacturer.module';
 import { UserFeedbackModule } from './user-feedback/user-feedback.module';
 
+
 @Module({
   imports: [PrismaModule, ArticlesModule, BatchCodeDecodingResultModule, BatchCodeFormularModule, ManufacturerModule, UserFeedbackModule],
   controllers: [AppController],

@@ -23,9 +23,13 @@ export class CreateBatchCodeDecodingResultDto {
     usedSmartLookup: boolean;
 
     @IsString()
-    @IsNotEmpty()
     @ApiProperty()
     brandId: string;
+
+    @IsString()
+    @IsNotEmpty()
+    @ApiProperty()
+    brandName: string;
 
     @IsString()
     @IsNotEmpty()
@@ -33,7 +37,12 @@ export class CreateBatchCodeDecodingResultDto {
     batchCodeCalculationFormularId: string;
 
     @IsString()
+    @ApiProperty()
+    productType: string;
+
+    @IsString()
     @IsNotEmpty()
     @ApiProperty()
     userDetailsId: string;
+    
 }
