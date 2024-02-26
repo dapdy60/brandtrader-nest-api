@@ -1,39 +1,39 @@
-import { Brand } from "@prisma/client";
-import { ApiProperty } from "@nestjs/swagger";
+import { Brand } from '@prisma/client';
+import { ApiProperty } from '@nestjs/swagger';
 export class BrandEntity implements Brand {
-    @ApiProperty()
-    id: string;
+  @ApiProperty()
+  id: string;
 
-    @ApiProperty()
-    creationTime: Date;
+  @ApiProperty()
+  creationTime: Date;
 
-    @ApiProperty()
-    creatorId: string;
+  @ApiProperty()
+  creatorId: string;
 
-    @ApiProperty()
-    lastModificationTime: Date;
+  @ApiProperty()
+  lastModificationTime: Date;
 
-    @ApiProperty()
-    lastModifierId: string;
+  @ApiProperty()
+  lastModifierId: string;
 
-    @ApiProperty()
-    isDeleted: boolean;
+  @ApiProperty()
+  isDeleted: boolean;
 
-    @ApiProperty()
-    deleterId: string;
+  @ApiProperty()
+  deleterId: string;
 
-    @ApiProperty()
-    deletionTime: Date;
+  @ApiProperty()
+  deletionTime: Date;
 
-    @ApiProperty()
-    manufacturerId: string;
+  @ApiProperty()
+  manufacturerId: string;
 
-    @ApiProperty()
-    fullName: string;
+  @ApiProperty()
+  fullName: string;
 
-    @ApiProperty()
-    standardName: string;
+  @ApiProperty()
+  standardName: string;
 
-    @ApiProperty()
-    logoUrl: string;
+  @ApiProperty()
+  logoUrl: string;
 }

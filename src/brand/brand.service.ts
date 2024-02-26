@@ -12,7 +12,7 @@ export class BrandService {
   }
 
   findAll() {
-    return this.prisma.brand.findMany({ where: { isDeleted: false || undefined }});
+    return this.prisma.brand.findMany({ where: { isDeleted: undefined } });
   }
 
   findOne(id: string) {

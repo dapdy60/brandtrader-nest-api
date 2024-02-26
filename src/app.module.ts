@@ -9,9 +9,16 @@ import { ManufacturerModule } from './manufacturer/manufacturer.module';
 import { UserFeedbackModule } from './user-feedback/user-feedback.module';
 import { BrandModule } from './brand/brand.module';
 
-
 @Module({
-  imports: [PrismaModule, ArticlesModule, BatchCodeDecodingResultModule, BatchCodeFormularModule, ManufacturerModule, UserFeedbackModule, BrandModule],
+  imports: [
+    PrismaModule,
+    ArticlesModule,
+    BatchCodeDecodingResultModule,
+    BatchCodeFormularModule,
+    ManufacturerModule,
+    UserFeedbackModule,
+    BrandModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
