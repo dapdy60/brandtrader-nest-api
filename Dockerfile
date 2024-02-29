@@ -16,6 +16,12 @@ COPY . .
 # Generate Prisma Client
 RUN npx prisma generate
 
+# Run migrations
+RUN npx prisma migrate deploy --preview-feature
+
+# Seed the database
+# RUN npx prisma db seed --preview-feature
+
 # Expose port 3000 (assuming your Nest.js app runs on this port)
 EXPOSE 3000
 
