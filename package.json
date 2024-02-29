@@ -1,7 +1,7 @@
 {
-  "name": "median",
+  "name": "batch-checker-api",
   "version": "0.0.1",
-  "description": "",
+  "description": "Batch Checker API",
   "author": "",
   "private": true,
   "license": "UNLICENSED",
