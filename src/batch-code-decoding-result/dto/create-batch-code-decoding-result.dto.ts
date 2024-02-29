@@ -14,7 +14,6 @@ export class CreateBatchCodeDecodingResultDto {
     inputBatchCode: string;
 
     @IsString()
-    @IsNotEmpty()
     @ApiProperty()
     responseDictionaryJson: string;
 
@@ -32,7 +31,6 @@ export class CreateBatchCodeDecodingResultDto {
     brandName: string;
 
     @IsString()
-    @IsNotEmpty()
     @ApiProperty()
     batchCodeCalculationFormularId: string;
 

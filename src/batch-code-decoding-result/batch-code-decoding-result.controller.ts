@@ -14,12 +14,12 @@ export class BatchCodeDecodingResultController {
   @Post()  
   @ApiCreatedResponse({ type: BatchCodeDecodingResultEntity })
   create(@Body() createBatchCodeDecodingResultDto: CreateBatchCodeDecodingResultDto) {
-    return this.  batchCodeDecodingResultService.create(createBatchCodeDecodingResultDto);
+    return this.batchCodeDecodingResultService.create(createBatchCodeDecodingResultDto);
   }
   @Post('decode')  
   @ApiCreatedResponse({ type: BatchCodeDecodingResultEntity })
   decode(@Body() createBatchCodeDecodingResultDto: CreateBatchCodeDecodingResultDto) {
-    return this.  batchCodeDecodingResultService.decode(createBatchCodeDecodingResultDto);
+    return this.batchCodeDecodingResultService.decode(createBatchCodeDecodingResultDto);
   }
 
   // @Post('decode')
