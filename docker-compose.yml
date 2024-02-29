@@ -12,5 +12,13 @@ services:
     ports:
       - '5432:5432'
 
+  nest_app:
+    build: .
+    restart: always
+    ports:
+      - '3000:3000'
+    depends_on:
+      - postgres
+
 volumes:
   postgres:
