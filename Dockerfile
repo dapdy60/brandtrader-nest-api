@@ -19,9 +19,11 @@ RUN npx prisma generate
 # Run migrations
 RUN npx prisma migrate deploy --preview-feature
 
-# Seed the database
-RUN npx prisma db seed --preview-feature
+# Verify the presence of seed data files
+RUN ls ./prisma/seed/
 
+# Seed the database if the seed data files exist
+RUN test -f ./prisma/seed/manufacturer-seed-data.json && test -f ./prisma/seed/brand-seed-data.json && npx prisma db seed --preview-feature || echo "Seed data files not found, skipping seed"
 
 # Expose port 3000 (assuming your Nest.js app runs on this port)
 EXPOSE 3000
